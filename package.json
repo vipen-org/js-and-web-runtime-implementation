@@ -1,6 +1,6 @@
 {
   "name": "@anio-jsbundler/runtime",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "scripts": {
     "prepare": "./node_modules/.bin/rollup -c rollup.config.mjs"
   },
