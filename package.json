@@ -1,0 +1,19 @@
+{
+  "name": "@anio-jsbundler/runtime",
+  "version": "0.0.1",
+  "scripts": {
+    "prepare": "./node_modules/.bin/rollup -c rollup.config.mjs"
+  },
+  "exports": {
+    ".": "./src/runtime_for_node/index.mjs"
+  },
+  "files": [
+    "./dist/virtual.mjs"
+  ],
+  "devDependencies": {
+    "rollup": "^4.9.0"
+  },
+  "dependencies": {
+    "callsites": "^4.1.0"
+  }
+}
