@@ -1,4 +1,4 @@
-# This is CI/CD version 0.1.0
+# This is CI/CD version 0.2.0
 name: CI/CD
 
 on:
@@ -51,8 +51,8 @@ jobs:
       - name: "Validate package.json version (if present)"
         run: bash -c 'if [ -f package.json ]; then clean_ver="$(printf "%s" "${{ github.ref_name }}" | cut -c2-)" ; grep -q "\"$clean_ver\"" package.json ; fi'
 
-      - name: "Run .cicd/deploy.sh script (if present)"
-        run: bash -c 'if [ -f ./.cicd/deploy.sh ]; then ./.cicd/deploy.sh ; fi'
+      - name: "Run .cicd/deploy.sh script"
+        run: ./.cicd/deploy.sh
         env:
           RELEASE_VERSION: ${{ github.ref_name }}
 
