@@ -1,4 +1,4 @@
-import getBuildContext from "./_getBuildContext.mjs"
+import getBuildContext from "./private/getBuildContext.mjs"
 
 const {bundler_meta} = getBuildContext()
 
