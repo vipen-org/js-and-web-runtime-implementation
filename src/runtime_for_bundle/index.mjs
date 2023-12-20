@@ -4,7 +4,10 @@ import getBuildContext from "./private/getBuildContext.mjs"
 export async function createDefaultContextAsync() {
 	const project = getBuildContext()
 
-	return await makeDefaultContext(project)
+	return await makeDefaultContext({
+		package_json: project.package_json,
+		anio_project_config: project.anio_project_config
+	})
 }
 
 // same as for node

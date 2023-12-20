@@ -4,7 +4,10 @@ import getProjectInformationFromCaller from "./private/getProjectInformationFrom
 export async function createDefaultContextAsync() {
 	const project = getProjectInformationFromCaller()
 
-	return await makeDefaultContext(project)
+	return await makeDefaultContext({
+		package_json: project.package_json,
+		anio_project_config: project.anio_project_config
+	})
 }
 
 // same as for bundle
