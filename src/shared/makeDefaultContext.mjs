@@ -1,4 +1,4 @@
-function logLine(line) {
+function default_logLine(line) {
 	if (typeof process === "object") {
 		process.stderr.write(`${line}\n`)
 	} else if (typeof console === "object") {
@@ -14,7 +14,7 @@ const log_levels = {
 	"trace": 7
 }
 
-function getCurrentLogLevel() {
+function default_getCurrentLogLevel() {
 	let current_log_level = "info"
 
 	if (typeof process === "object") {
@@ -65,7 +65,7 @@ function logWithLevel(ctx, level, args) {
 		str += `${current_line}\n`
 	}
 
-	logLine(str.slice(0, str.length - 1))
+	ctx.logLine(str.slice(0, str.length - 1))
 }
 
 export default async function(meta) {
@@ -74,7 +74,8 @@ export default async function(meta) {
 	let the_context = {
 		package_json: meta.package_json,
 		anio_project_config,
-		getCurrentLogLevel
+		getCurrentLogLevel: default_getCurrentLogLevel,
+		logLine: default_logLine
 	}
 
 	the_context.log = (...args) => {
