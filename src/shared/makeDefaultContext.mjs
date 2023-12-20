@@ -6,10 +6,13 @@ function logLine(line) {
 	}
 }
 
-export default function createDefaultContext() {
+export default function(meta) {
 	return {
 		log(message) {
-			logLine(`createDefaultContext.log(${message})`)
+			const project = `<${meta.package_json.name}>`
+			logLine(
+				`${project} createDefaultContext.log(${message})`
+			)
 		}
 	}
 }
