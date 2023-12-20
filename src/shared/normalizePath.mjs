@@ -1,10 +1,4 @@
-function handleDots(path) {
-	let parts = path.split("/")
-
-	console.log(parts)
-}
-
-export default function normalizePath(path) {
+export default function(path) {
 	let parts = path.split("/")
 	let stack = []
 
