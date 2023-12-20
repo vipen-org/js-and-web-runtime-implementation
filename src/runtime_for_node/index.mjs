@@ -1,3 +1,17 @@
+import getProjectInformationFromCaller from "./private/getProjectInformationFromCaller.mjs"
+
+export async function createDefaultContextAsync() {
+	const project = getProjectInformationFromCaller()
+
+	return {
+		log(...args) {
+			console.log(
+				project.root, "log()", ...args
+			)
+		}
+	}
+}
+
 // same as for bundle
 export {
 	default as loadResource
