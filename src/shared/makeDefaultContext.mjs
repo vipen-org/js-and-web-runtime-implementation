@@ -6,7 +6,7 @@ function logLine(line) {
 	}
 }
 
-export default function(meta) {
+export default async function(meta) {
 	return {
 		log(message) {
 			const project = `<${meta.package_json.name}>`

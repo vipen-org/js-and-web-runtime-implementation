@@ -4,7 +4,7 @@ import getBuildContext from "./private/getBuildContext.mjs"
 export async function createDefaultContextAsync() {
 	const project = getBuildContext()
 
-	return makeDefaultContext(project)
+	return await makeDefaultContext(project)
 }
 
 // same as for node

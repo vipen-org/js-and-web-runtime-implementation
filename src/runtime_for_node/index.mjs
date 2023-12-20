@@ -4,7 +4,7 @@ import getProjectInformationFromCaller from "./private/getProjectInformationFrom
 export async function createDefaultContextAsync() {
 	const project = getProjectInformationFromCaller()
 
-	return makeDefaultContext(project)
+	return await makeDefaultContext(project)
 }
 
 // same as for bundle
