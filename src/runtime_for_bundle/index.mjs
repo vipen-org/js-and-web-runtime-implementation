@@ -6,7 +6,10 @@ export async function createDefaultContextAsync() {
 
 	return await makeDefaultContext({
 		package_json: project.package_json,
-		anio_project_config: project.anio_project_config
+		anio_project_config: project.anio_project_config,
+		bundle: {
+			id: project.bundle_id
+		}
 	})
 }
 

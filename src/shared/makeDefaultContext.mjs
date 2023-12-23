@@ -37,12 +37,18 @@ function default_getCurrentLogLevel() {
 }
 
 function logWithLevel(ctx, level, args) {
+	let bundle_identifier = ""
+
+	if (ctx.bundle !== null) {
+		bundle_identifier = `@${ctx.bundle.id.slice(0, 6)}`
+	}
+
 	const message_log_level = log_levels[level]
 	const current_log_level = log_levels[ctx.getCurrentLogLevel()]
 
 	if (message_log_level > current_log_level) return
 
-	let first_line = `[${level.padStart(5, " ")}] <${ctx.package_json.name}> `
+	let first_line = `[${level.padStart(5, " ")}] <${ctx.package_json.name}${bundle_identifier}> `
 	let padding = " ".repeat(first_line.length)
 
 	const log_message = args.map(arg => {
@@ -75,7 +81,8 @@ export default async function(meta) {
 		package_json: meta.package_json,
 		anio_project_config,
 		getCurrentLogLevel: default_getCurrentLogLevel,
-		logLine: default_logLine
+		logLine: default_logLine,
+		bundle: meta.bundle
 	}
 
 	the_context.log = (...args) => {
