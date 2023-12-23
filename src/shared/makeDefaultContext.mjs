@@ -28,7 +28,7 @@ function default_getCurrentLogLevel() {
 	}
 
 	if (!(current_log_level in log_levels)) {
-		logLine(`Warning: invalid log level '${current_log_level}'`)
+		default_logLine(`Warning: invalid log level '${current_log_level}'`)
 
 		current_log_level = "info"
 	}
