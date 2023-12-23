@@ -44,7 +44,7 @@ function logWithLevel(ctx, level, args) {
 	}
 
 	const message_log_level = log_levels[level]
-	const current_log_level = log_levels[ctx.getCurrentLogLevel()]
+	const current_log_level = log_levels[ctx.plugs.getCurrentLogLevel()]
 
 	if (message_log_level > current_log_level) return
 
@@ -71,7 +71,7 @@ function logWithLevel(ctx, level, args) {
 		str += `${current_line}\n`
 	}
 
-	ctx.logLine(str.slice(0, str.length - 1))
+	ctx.plugs.logLine(str.slice(0, str.length - 1))
 }
 
 export default async function(meta) {
@@ -80,9 +80,15 @@ export default async function(meta) {
 	let the_context = {
 		package_json: meta.package_json,
 		anio_project_config,
-		getCurrentLogLevel: default_getCurrentLogLevel,
-		logLine: default_logLine,
-		bundle: meta.bundle
+		bundle: meta.bundle,
+
+		/**
+		 * Plugs are properties overwritable by the user when importWithContextAysnc()
+		 */
+		plugs: {
+			getCurrentLogLevel: default_getCurrentLogLevel,
+			logLine: default_logLine
+		}
 	}
 
 	the_context.log = (...args) => {
