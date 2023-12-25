@@ -1,4 +1,4 @@
-function default_logLine(line) {
+function default_logLine(ctx, line) {
 	if (typeof process === "object") {
 		process.stderr.write(`${line}\n`)
 	} else if (typeof console === "object") {
@@ -14,7 +14,7 @@ const log_levels = {
 	"trace": 7
 }
 
-function default_getCurrentLogLevel() {
+function default_getCurrentLogLevel(ctx) {
 	let current_log_level = "info"
 
 	if (typeof process === "object") {
@@ -44,7 +44,7 @@ function default_logWithLevel(ctx, level, args) {
 	}
 
 	const message_log_level = log_levels[level]
-	const current_log_level = log_levels[ctx.plugs.getCurrentLogLevel()]
+	const current_log_level = log_levels[ctx.plugs.getCurrentLogLevel(ctx)]
 
 	if (message_log_level > current_log_level) return
 
@@ -71,13 +71,23 @@ function default_logWithLevel(ctx, level, args) {
 		str += `${current_line}\n`
 	}
 
-	ctx.plugs.logLine(str.slice(0, str.length - 1))
+	ctx.plugs.logLine(ctx, str.slice(0, str.length - 1))
 }
 
 export default async function(meta) {
 	const anio_project_config = await meta.anio_project_config
 
 	let the_context = {
+		/**
+		 * Export default functions, they are not exported directly
+		 * to prevent user overwriting the default implementation.
+		 */
+		defaults: {
+			getCurrentLogLevel: default_getCurrentLogLevel,
+			logLine: default_logLine,
+			logWithLevel: default_logWithLevel
+		},
+
 		package_json: meta.package_json,
 		anio_project_config,
 		bundle: meta.bundle,
