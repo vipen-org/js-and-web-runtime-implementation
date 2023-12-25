@@ -94,12 +94,12 @@ export default async function(meta) {
 		/**
 		 * Plugs are properties overwritable by the user when importWithContextAysnc()
 		 */
-		plugs: {
-			getCurrentLogLevel: default_getCurrentLogLevel,
-			logLine: default_logLine,
-			logWithLevel(ctx, level, args) {
-				return default_logWithLevel(ctx, level, args)
-			}
+		plugs: {}
+	}
+
+	for (const key in the_context.defaults) {
+		the_context.plugs[key] = (...args) => {
+			return the_context.defaults[key](...args)
 		}
 	}
 
