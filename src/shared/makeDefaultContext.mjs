@@ -79,8 +79,7 @@ export default async function(meta) {
 
 	let the_context = {
 		/**
-		 * Export default functions, they are not exported directly
-		 * to prevent user overwriting the default implementation.
+		 * Export default implementation for pluggables.
 		 */
 		defaults: {
 			getCurrentLogLevel: default_getCurrentLogLevel,
