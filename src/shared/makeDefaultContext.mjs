@@ -36,7 +36,7 @@ function default_getCurrentLogLevel() {
 	return current_log_level
 }
 
-function logWithLevel(ctx, level, args) {
+function default_logWithLevel(ctx, level, args) {
 	let bundle_identifier = ""
 
 	if (ctx.bundle !== null) {
@@ -87,18 +87,21 @@ export default async function(meta) {
 		 */
 		plugs: {
 			getCurrentLogLevel: default_getCurrentLogLevel,
-			logLine: default_logLine
+			logLine: default_logLine,
+			logWithLevel(ctx, level, args) {
+				return default_logWithLevel(ctx, level, args)
+			}
 		}
 	}
 
 	the_context.log = (...args) => {
 		// todo: add async mutex?
-		logWithLevel(the_context, "debug", args)
+		the_context.plugs.logWithLevel(the_context, "debug", args)
 	}
 
 	for (const log_level of Object.keys(log_levels)) {
 		the_context.log[log_level] = function(...args) {
-			logWithLevel(the_context, log_level, args)
+			the_context.plugs.logWithLevel(the_context, log_level, args)
 		}
 	}
 
