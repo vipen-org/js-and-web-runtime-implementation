@@ -97,6 +97,8 @@ export default async function(meta) {
 		plugs: {}
 	}
 
+	/* Make default plugs call the_context.defaults implementation */
+	/* This makes it possible to either overwrite .plugs OR .defaults */
 	for (const key in the_context.defaults) {
 		the_context.plugs[key] = (...args) => {
 			return the_context.defaults[key](...args)
