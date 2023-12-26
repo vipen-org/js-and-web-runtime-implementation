@@ -6,7 +6,9 @@
   },
   "exports": {
     ".": "./dist/node.mjs",
-    "./package.json": "./package.json"
+    "./package.json": "./package.json",
+    "./dist/node.mjs": "./dist/node.mjs",
+    "./dist/virtual.mjs": "./dist/virtual.mjs"
   },
   "files": [
     "./dist/virtual.mjs",
