@@ -14,6 +14,13 @@ const log_levels = {
 	"trace": 7
 }
 
+function default_shouldLog(ctx, level) {
+	const message_log_level = log_levels[level]
+	const current_log_level = log_levels[ctx.plugs.getCurrentLogLevel(ctx)]
+
+	return !(message_log_level > current_log_level)
+}
+
 function default_getCurrentLogLevel(ctx) {
 	let current_log_level = "info"
 
@@ -43,10 +50,9 @@ function default_logWithLevel(ctx, level, args) {
 		bundle_identifier = `@${ctx.bundle.id.slice(0, 6)}`
 	}
 
-	const message_log_level = log_levels[level]
-	const current_log_level = log_levels[ctx.plugs.getCurrentLogLevel(ctx)]
-
-	if (message_log_level > current_log_level) return
+	if (!ctx.plugs.shouldLog(ctx, level)) {
+		return
+	}
 
 	let first_line = `[${level.padStart(5, " ")}] <${ctx.package_json.name}${bundle_identifier}> `
 	let padding = " ".repeat(first_line.length)
@@ -84,7 +90,8 @@ export default async function(meta) {
 		defaults: {
 			getCurrentLogLevel: default_getCurrentLogLevel,
 			logLine: default_logLine,
-			logWithLevel: default_logWithLevel
+			logWithLevel: default_logWithLevel,
+			shouldLog: default_shouldLog
 		},
 
 		package_json: meta.package_json,
