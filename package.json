@@ -1,5 +1,5 @@
 {
-  "name": "@anio-jsbundler/runtime",
+  "name": "@anio-jsbundler/project",
   "version": "0.1.2",
   "scripts": {
     "prepare": "./build.sh"
