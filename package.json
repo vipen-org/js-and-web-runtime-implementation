@@ -2,7 +2,7 @@
   "name": "@anio-jsbundler/runtime",
   "version": "0.1.2",
   "scripts": {
-    "prepare": "./node_modules/.bin/rollup -c rollup_bundle.config.mjs && ./node_modules/.bin/rollup -c rollup_node.config.mjs"
+    "prepare": "./build.sh"
   },
   "exports": {
     ".": "./dist/node.mjs",

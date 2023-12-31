@@ -1,5 +1,5 @@
 export default {
-	input: "./src/runtime_for_bundle/index.mjs",
+	input: "./src/code_for_bundled_version/index.mjs",
 
 	output: {
 		file: "./dist/virtual.mjs",

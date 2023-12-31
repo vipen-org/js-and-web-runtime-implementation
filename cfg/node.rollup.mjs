@@ -1,5 +1,5 @@
 export default {
-	input: "./src/runtime_for_node/index.mjs",
+	input: "./src/code_for_live_node_version/index.mjs",
 
 	output: {
 		file: "./dist/node.mjs",
