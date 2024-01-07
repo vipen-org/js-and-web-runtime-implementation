@@ -1,5 +1,5 @@
 {
-  "name": "@anio-jsbundler/project",
+  "name": "@anio-gyp/project",
   "version": "0.2.0",
   "scripts": {
     "prepare": "./build.sh"

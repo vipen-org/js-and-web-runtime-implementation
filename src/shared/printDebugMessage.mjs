@@ -1,7 +1,7 @@
 export default function printDebugMessage(msg) {
 	let lines = msg.split("\n")
 	let output = ``
-	let start = `<anio-jsbundler runtime> `
+	let start = `<anio-gyp runtime> `
 
 	for (let i = 0; i < lines.length; ++i) {
 		if (i === 0) {

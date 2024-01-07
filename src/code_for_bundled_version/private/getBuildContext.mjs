@@ -1,4 +1,4 @@
-// $build_context will be replaced by anio-jsbundler
+// $build_context will be replaced by anio-gyp
 let build_context = JSON.parse(`$build_context$`)
 
 const {anio_project_config} = build_context
