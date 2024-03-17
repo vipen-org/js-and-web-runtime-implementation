@@ -10,9 +10,7 @@ export default function loadResourceFromDisk(resource_path) {
 
 	resource_path = normalizePath(resource_path)
 
-	printDebugMessage(
-		`Requested resource '${resource_path}' from disk.`
-	)
+	printDebugMessage(`Requested resource '${resource_path}' from disk.`)
 
 	const absolute_resource_path = path.resolve(
 		project.root, "bundle.resources", resource_path
