@@ -1,5 +1,5 @@
 {
-  "name": "@vipen-org/js-runtime",
+  "name": "@vipen/js-runtime",
   "version": "0.4.0",
   "scripts": {
     "prepare": "./build.sh"
