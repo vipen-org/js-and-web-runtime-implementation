@@ -8,9 +8,7 @@ export default function loadResourceFromBundle(resource_path) {
 
 	resource_path = normalizePath(resource_path)
 
-	printDebugMessage(
-		`Requested resource '${resource_path}' from bundle.`
-	)
+	printDebugMessage(`Requested resource '${resource_path}' from bundle.`)
 
 	if (!(resource_path in bundled_resources)) {
 		throw new Error(
