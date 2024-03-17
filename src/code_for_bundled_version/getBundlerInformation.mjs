@@ -1,6 +1,6 @@
-import getBuildContext from "./private/getBuildContext.mjs"
+import getJSRuntimeData from "./private/getJSRuntimeData.mjs"
 
-const {bundler_meta} = getBuildContext()
+const {bundler_meta} = getJSRuntimeData()
 
 export default function getBundlerInformation() {
 	return bundler_meta

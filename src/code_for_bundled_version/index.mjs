@@ -1,8 +1,8 @@
 import makeDefaultContext from "../shared/makeDefaultContext.mjs"
-import getBuildContext from "./private/getBuildContext.mjs"
+import getJSRuntimeData from "./private/getJSRuntimeData.mjs"
 
 export async function createDefaultContextAsync() {
-	const project = getBuildContext()
+	const project = getJSRuntimeData()
 
 	return await makeDefaultContext({
 		package_json: project.package_json,

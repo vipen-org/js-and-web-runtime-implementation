@@ -1,10 +1,10 @@
 import printDebugMessage from "../shared/printDebugMessage.mjs"
 import normalizePath from "../shared/normalizePath.mjs"
 
-import getBuildContext from "./private/getBuildContext.mjs"
+import getJSRuntimeData from "./private/getJSRuntimeData.mjs"
 
 export default function loadResourceFromBundle(resource_path) {
-	const {short_bundle_id, bundled_resources} = getBuildContext()
+	const {short_bundle_id, bundled_resources} = getJSRuntimeData()
 
 	resource_path = normalizePath(resource_path)
 
