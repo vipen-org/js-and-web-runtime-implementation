@@ -8,9 +8,9 @@ export default function() {
 		path.join(project_root, "package.json")
 	).toString())
 
-	/* does not use await so this function can be used in synchronous contexts */
-	const anio_project_config = import(
-		path.join(project_root, "anio_project.mjs")
+	// does not use await so this function can be used in synchronous contexts
+	const vipen_config = import(
+		path.join(project_root, "vipen.config.mjs")
 	).then(cfg => {
 		return cfg.default
 	}).then(cfg => {
@@ -20,6 +20,6 @@ export default function() {
 	return {
 		root: project_root,
 		package_json,
-		anio_project_config
+		vipen_config
 	}
 }

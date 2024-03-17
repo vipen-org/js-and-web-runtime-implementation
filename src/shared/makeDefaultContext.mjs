@@ -81,7 +81,7 @@ function default_logWithLevel(ctx, level, args) {
 }
 
 export default async function(meta) {
-	const anio_project_config = await meta.anio_project_config
+	const vipen_config = await meta.vipen_config
 
 	let the_context = {
 		/**
@@ -95,7 +95,7 @@ export default async function(meta) {
 		},
 
 		package_json: meta.package_json,
-		anio_project_config,
+		vipen_config,
 		bundle: meta.bundle,
 
 		/**

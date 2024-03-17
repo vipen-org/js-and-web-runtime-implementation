@@ -16,13 +16,11 @@ export default function() {
 	*/
 
 	const caller_dir = path.dirname(caller_file)
-	const anio_project_config_path = nodeFsFindNearestFile.sync(
-		"anio_project.mjs", caller_dir
-	)
+	const vipen_config_path = nodeFsFindNearestFile.sync("vipen.config.mjs", caller_dir)
 
-	if (!anio_project_config_path) {
-		throw new Error(`Could not determine caller's project root path. Does anio_project.mjs exist in the project root?`)
+	if (!vipen_config_path) {
+		throw new Error(`Could not determine caller's project root path. Does vipen.config.mjs exist in the project root?`)
 	}
 
-	return path.dirname(anio_project_config_path)
+	return path.dirname(vipen_config_path)
 }
