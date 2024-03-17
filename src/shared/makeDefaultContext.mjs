@@ -25,12 +25,12 @@ function default_getCurrentLogLevel(ctx) {
 	let current_log_level = "info"
 
 	if (typeof process === "object") {
-		if ("ANIO_JSBUNDLER_LOG_LEVEL" in process.env) {
-			current_log_level = process.env["ANIO_JSBUNDLER_LOG_LEVEL"].toLowerCase()
+		if ("VIPEN_JS_RUNTIME_LOG_LEVEL" in process.env) {
+			current_log_level = process.env["VIPEN_JS_RUNTIME_LOG_LEVEL"].toLowerCase()
 		}
 	} else if (typeof window === "object") {
-		if ("ANIO_JSBUNDLER_LOG_LEVEL" in window) {
-			current_log_level = window.ANIO_JSBUNDLER_LOG_LEVEL.toLowerCase()
+		if ("VIPEN_JS_RUNTIME_LOG_LEVEL" in window) {
+			current_log_level = window.VIPEN_JS_RUNTIME_LOG_LEVEL.toLowerCase()
 		}
 	}
 
