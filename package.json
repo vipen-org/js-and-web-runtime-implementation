@@ -15,7 +15,6 @@
     "./dist/node.mjs"
   ],
   "devDependencies": {
-    "@anio-js-foundation/is-node": "^2.0.0",
     "@anio-node-foundation/fs-find-nearest-file": "^3.0.1",
     "@rollup/plugin-node-resolve": "^15.2.3",
     "rollup": "^4.13.0"
