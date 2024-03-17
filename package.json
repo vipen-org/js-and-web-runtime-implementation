@@ -1,6 +1,6 @@
 {
-  "name": "@anio-gyp/project",
-  "version": "0.3.2",
+  "name": "@vipen-org/js-runtime",
+  "version": "0.0.1",
   "scripts": {
     "prepare": "./build.sh"
   },
@@ -15,15 +15,16 @@
     "./dist/node.mjs"
   ],
   "devDependencies": {
-    "@anio-js-core-foundation/node-find-nearest-file": "^1.0.0",
+    "@anio-js-foundation/is-node": "^2.0.0",
+    "@anio-node-foundation/fs-find-nearest-file": "^3.0.1",
     "@rollup/plugin-node-resolve": "^15.2.3",
-    "rollup": "^4.9.0"
+    "rollup": "^4.13.0"
   },
   "dependencies": {
     "callsites": "^4.1.0"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/anio-gyp/js-runtime.git"
+    "url": "git+https://github.com/vipen-org/js-runtime.git"
   }
 }
