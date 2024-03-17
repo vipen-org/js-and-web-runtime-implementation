@@ -1,7 +1,7 @@
 export default function printDebugMessage(msg) {
 	let lines = msg.split("\n")
 	let output = ``
-	let start = `<anio-gyp runtime> `
+	let start = `<vipen js-runtime> `
 
 	for (let i = 0; i < lines.length; ++i) {
 		if (i === 0) {
