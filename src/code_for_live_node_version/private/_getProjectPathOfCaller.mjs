@@ -1,7 +1,7 @@
 import callsites from "callsites"
 import {fileURLToPath} from "node:url"
 import path from "node:path"
-import _findNearestFile from "./_findNearestFile.mjs"
+import nodeFsFindNearestFile from "@anio-node-foundation/fs-find-nearest-file"
 
 export default function() {
 	const entries = callsites()
@@ -16,7 +16,7 @@ export default function() {
 	*/
 
 	const caller_dir = path.dirname(caller_file)
-	const anio_project_config_path = _findNearestFile(
+	const anio_project_config_path = nodeFsFindNearestFile.sync(
 		"anio_project.mjs", caller_dir
 	)
 
