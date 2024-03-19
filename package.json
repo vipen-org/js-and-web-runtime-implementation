@@ -1,5 +1,5 @@
 {
-  "name": "@vipen/js-runtime",
+  "name": "@vipen/js-and-web-runtime",
   "version": "0.4.1",
   "exports": {
     ".": "./src/index.mjs",
@@ -13,6 +13,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vipen-org/js-runtime.git"
+    "url": "git+https://github.com/vipen-org/js-and-web-runtime.git"
   }
 }
