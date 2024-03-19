@@ -1,26 +1,15 @@
 {
   "name": "@vipen/js-runtime",
   "version": "0.4.1",
-  "scripts": {
-    "prepare": "./build.sh"
-  },
   "exports": {
-    ".": "./dist/node.mjs",
-    "./package.json": "./package.json",
-    "./dist/node.mjs": "./dist/node.mjs",
-    "./dist/virtual.mjs": "./dist/virtual.mjs"
-  },
-  "files": [
-    "./dist/virtual.mjs",
-    "./dist/node.mjs"
-  ],
-  "devDependencies": {
-    "@anio-node-foundation/fs-find-nearest-file": "^3.0.1",
-    "@rollup/plugin-node-resolve": "^15.2.3",
-    "rollup": "^4.13.0"
+    ".": "./src/index.mjs",
+    "./node": "./src/node/index.mjs"
   },
   "dependencies": {
-    "callsites": "^4.1.0"
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "rollup": "^4.13.0",
+    "@anio-node-foundation/fs-scandir": "^2.0.1",
+    "@anio-node-foundation/fs-utils": "^2.2.0"
   },
   "repository": {
     "type": "git",
