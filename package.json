@@ -2,7 +2,7 @@
   "name": "@vipen/js-and-web-runtime",
   "version": "0.7.1",
   "exports": {
-    ".": "./src/runtime/index.mjs",
+    ".": "./dist/runtime.mjs",
     "./node": "./src/node/index.mjs",
     "./bundle": "./dist/runtime.mjs"
   },
