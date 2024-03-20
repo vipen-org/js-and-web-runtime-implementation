@@ -1,4 +1,5 @@
 import parseResourceURL from "./parseResourceURL.mjs"
+import makeDefaultContext from "./makeDefaultContext.mjs"
 
 function prepareResource(type, resource) {
 	return resource
@@ -6,6 +7,12 @@ function prepareResource(type, resource) {
 
 export function initializeRuntimeFromData(js_runtime_data) {
 	return {
+		createDefaultContext() {
+			return makeDefaultContext(
+				JSON.parse(JSON.stringify(js_runtime_data.package_json))
+			)
+		},
+
 		loadResource(url) {
 			const {type, path} = parseResourceURL(url)
 
