@@ -1,6 +1,6 @@
 {
   "name": "@vipen/js-and-web-runtime",
-  "version": "0.7.1",
+  "version": "0.8.0",
   "exports": {
     ".": "./dist/runtime.mjs",
     "./node": "./src/node/index.mjs",
