@@ -1,0 +1,1 @@
+Code in this folder must be runnable in a web and node context.
