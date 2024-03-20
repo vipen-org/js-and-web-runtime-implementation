@@ -3,7 +3,8 @@
   "version": "0.6.0",
   "exports": {
     ".": "./src/runtime/index.mjs",
-    "./node": "./src/node/index.mjs"
+    "./node": "./src/node/index.mjs",
+    "./bundle": "./dist/runtime.mjs"
   },
   "dependencies": {
     "@rollup/plugin-node-resolve": "^15.2.3",
@@ -14,5 +15,8 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/vipen-org/js-and-web-runtime.git"
+  },
+  "scripts": {
+    "prepare": "./node_modules/.bin/rollup -c rollup.config.mjs"
   }
 }
