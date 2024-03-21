@@ -82,9 +82,7 @@ function default_logWithLevel(ctx, level, args) {
 
 export default function(package_json) {
 	let the_context = {
-		/**
-		 * Export default implementation for pluggables.
-		 */
+		// Export default implementation for pluggables.
 		defaults: {
 			getCurrentLogLevel: default_getCurrentLogLevel,
 			logLine: default_logLine,
@@ -96,14 +94,12 @@ export default function(package_json) {
 		//anio_project_config,
 		//bundle: meta.bundle,
 
-		/**
-		 * Plugs are properties overwritable by the user when importWithContextAysnc()
-		 */
+		// Plugs are properties overwritable by the user when importWithContextAysnc()
 		plugs: {}
 	}
 
-	/* Make default plugs call the_context.defaults implementation */
-	/* This makes it possible to either overwrite .plugs OR .defaults */
+	// Make default plugs call the_context.defaults implementation
+	// This makes it possible to either overwrite .plugs OR .defaults
 	for (const key in the_context.defaults) {
 		the_context.plugs[key] = (...args) => {
 			return the_context.defaults[key](...args)
