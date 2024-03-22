@@ -2,7 +2,7 @@ import path from "node:path"
 import fs from "node:fs/promises"
 import {isRegularDirectory} from "@anio-node-foundation/fs-utils"
 import scandir from "@anio-node-foundation/fs-scandir"
-import bundler from "../bundler/index.mjs"
+import bundler from "./bundler/index.mjs"
 
 async function bundleUpResource(project_root, type, relative_path) {
 	if (type === "esmodule") {
