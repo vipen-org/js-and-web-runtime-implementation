@@ -7,6 +7,12 @@ function prepareResource(type, resource) {
 
 export function initializeRuntimeFromData(js_runtime_data) {
 	return {
+		version: `%%%VIPEN_RUNTIME_VERSION%%%`,
+
+		getRuntimeVersion() {
+			return `%%%VIPEN_RUNTIME_VERSION%%%`
+		},
+
 		createDefaultContext() {
 			return makeDefaultContext(
 				JSON.parse(JSON.stringify(js_runtime_data.package_json))
