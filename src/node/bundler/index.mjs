@@ -21,9 +21,10 @@ export default async function(project_root, relative_path) {
 		plugins: [resolve()],
 
 		onLog(level, error, handler) {
-			//print(
-			//	`    [${level}] rollup says ${error.message}\n`
-			//)
+			//
+			// todo: detect if called with vipen builder, add to context.warnings array instead (if possible)
+			//
+			process.stderr.write(`⚠️  @vipen/js-and-web-runtime rollup says [${level}] \u001b[1;33m${error.message} \u001b[0;0m\n`)
 		}
 	}
 
