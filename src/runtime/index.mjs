@@ -46,6 +46,11 @@ export function initializeRuntimeFromData(js_runtime_data) {
 	// located in resources/esmodule
 	//
 	runtime.loadStaticResource = (url) => {
+		// always deny loading esmodules
+		if (url.startsWith("esmodule://")) {
+			throw new Error(`esmodules cannot be loaded via loadStaticResource, use loadResource instead!`)
+		}
+
 		// since this is the runtime version of "loadStaticResource"
 		// this is just an alias to "loadResource"
 		return runtime.loadResource(url)
