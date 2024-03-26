@@ -6,7 +6,7 @@ function prepareResource(type, resource) {
 }
 
 export function initializeRuntimeFromData(js_runtime_data) {
-	return {
+	const runtime = {
 		version: `%%%VIPEN_RUNTIME_VERSION%%%`,
 
 		getRuntimeVersion() {
@@ -40,4 +40,6 @@ export function initializeRuntimeFromData(js_runtime_data) {
 			return JSON.parse(JSON.stringify(js_runtime_data.vipen_config))
 		}
 	}
+
+	return runtime
 }
