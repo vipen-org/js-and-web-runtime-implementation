@@ -18,7 +18,7 @@ async function bundleUpResource(project_root, type, relative_path) {
 	}
 }
 
-export default async function(project_root) {
+export default async function(project_root, ignore_esmodules = false) {
 	const project_resources_path = path.join(project_root, "resources")
 
 	if (!isRegularDirectory.sync(project_resources_path)) {
@@ -40,6 +40,14 @@ export default async function(project_root) {
 		const relative_path = tmp.join("/")
 
 		if (!(["esmodule", "text", "blob"].includes(resource_type))) continue
+
+		//
+		// ignore esmodules when flag is set.
+		// this is to only fetch static resources
+		// which are guaranteed not to include other
+		// resources, as would be the case with esmodule resources
+		//
+		if (ignore_esmodules && resource_type === "esmodule") continue
 
 		resources.push({
 			type: resource_type,
