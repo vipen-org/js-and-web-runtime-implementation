@@ -6,8 +6,11 @@ import path from "node:path"
 import fs from "node:fs/promises"
 import {generateTemporaryPathName} from "@anio-node-foundation/fs-utils"
 
+import rollupPluginFactory from "./plugin.mjs"
+
 export default async function(project_root, relative_path) {
 	const output = await generateTemporaryPathName() + ".mjs"
+	const plugin = await rollupPluginFactory(project_root)
 
 	const rollup_options = {
 		input: path.join("resources", "esmodule", relative_path),
@@ -18,7 +21,7 @@ export default async function(project_root, relative_path) {
 			//inlineDynamicImports: true
 		},
 
-		plugins: [resolve()],
+		plugins: [plugin(), resolve()],
 
 		onLog(level, error, handler) {
 			//
