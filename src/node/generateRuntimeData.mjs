@@ -5,7 +5,7 @@ import searchForProjectResources from "./searchForProjectResources.mjs"
 //
 // generates runtime data for project located at "project_root"
 //
-export default async function(project_root) {
+export default async function(project_root, ignore_esmodules = false) {
 	// resolve project package.json
 	const package_json = await resolvePackageJSON(project_root)
 	// resolve vipen config
@@ -14,6 +14,6 @@ export default async function(project_root) {
 	return {
 		package_json,
 		vipen_config,
-		resources: await searchForProjectResources(project_root)
+		resources: await searchForProjectResources(project_root, ignore_esmodules)
 	}
 }
