@@ -41,5 +41,15 @@ export function initializeRuntimeFromData(js_runtime_data) {
 		}
 	}
 
+	//
+	// static resources are allowed to be imported by other resources
+	// located in resources/esmodule
+	//
+	runtime.loadStaticResource = (url) => {
+		// since this is the runtime version of "loadStaticResource"
+		// this is just an alias to "loadResource"
+		return runtime.loadResource(url)
+	}
+
 	return runtime
 }
