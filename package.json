@@ -7,10 +7,11 @@
     "./bundle": "./dist/runtime.mjs"
   },
   "dependencies": {
-    "@rollup/plugin-node-resolve": "^15.2.3",
-    "rollup": "^4.13.0",
+    "@anio-js-foundation/create-temporary-resource": "^2.0.0",
     "@anio-node-foundation/fs-scandir": "^2.0.1",
-    "@anio-node-foundation/fs-utils": "^2.2.0"
+    "@anio-node-foundation/fs-utils": "^2.2.0",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "rollup": "^4.13.0"
   },
   "repository": {
     "type": "git",

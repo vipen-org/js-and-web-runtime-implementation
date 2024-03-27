@@ -27,6 +27,8 @@ async function loadVirtualModule(runtime_data) {
 		virtual_module += `export function ${method}(...args) { return runtime.${method}(...args); }\n`
 	}
 
+	virtual_module += `loadStaticResource.asURL = function loadStaticResourceAsURL(...args) { return runtime.loadStaticResource.asURL(...args); }\n`
+
 	virtual_module += `export default {\n`
 
 	for (const method of runtime_methods) {
