@@ -1,6 +1,4 @@
 import process from "node:process"
-import {rollup} from "rollup"
-import resolve from "@rollup/plugin-node-resolve"
 
 import path from "node:path"
 import fs from "node:fs/promises"
@@ -8,9 +6,11 @@ import {generateTemporaryPathName} from "@anio-node-foundation/fs-utils"
 
 import rollupPluginFactory from "./plugin.mjs"
 
-export default async function(project_root, relative_path) {
+export default async function(project, relative_path) {
+	const {rollup, rollupResolvePlugin} = project.target_dependencies
+
 	const output = await generateTemporaryPathName() + ".mjs"
-	const plugin = await rollupPluginFactory(project_root)
+	const plugin = await rollupPluginFactory(project)
 
 	const rollup_options = {
 		input: path.join("resources", "esmodule", relative_path),
@@ -21,7 +21,7 @@ export default async function(project_root, relative_path) {
 			//inlineDynamicImports: true
 		},
 
-		plugins: [plugin(), resolve()],
+		plugins: [plugin(), rollupResolvePlugin()],
 
 		onLog(level, error, handler) {
 			//
@@ -34,7 +34,7 @@ export default async function(project_root, relative_path) {
 	const cwd = process.cwd()
 
 	// needed for rollup-node-resolve plugin
-	process.chdir(project_root)
+	process.chdir(project.root)
 
 	try {
 		const bundle = await rollup(rollup_options)

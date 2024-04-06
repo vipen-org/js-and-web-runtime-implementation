@@ -4,22 +4,22 @@ import {isRegularDirectory} from "@anio-node-foundation/fs-utils"
 import scandir from "@anio-node-foundation/fs-scandir"
 import bundler from "./bundler/index.mjs"
 
-async function bundleUpResource(project_root, type, relative_path) {
+async function bundleUpResource(project, type, relative_path) {
 	if (type === "esmodule") {
-		return await bundler(project_root, relative_path)
+		return await bundler(project, relative_path)
 	} else if (type === "text") {
-		const absolute_path = path.join(project_root, "resources", "text", relative_path)
+		const absolute_path = path.join(project.root, "resources", "text", relative_path)
 
 		return (await fs.readFile(absolute_path)).toString()
 	} else {
-		const absolute_path = path.join(project_root, "resources", "blob", relative_path)
+		const absolute_path = path.join(project.root, "resources", "blob", relative_path)
 
 		return (await fs.readFile(absolute_path)).toString("base64")
 	}
 }
 
-export default async function(project_root, ignore_esmodules = false) {
-	const project_resources_path = path.join(project_root, "resources")
+export default async function(project, ignore_esmodules = false) {
+	const project_resources_path = path.join(project.root, "resources")
 
 	if (!isRegularDirectory.sync(project_resources_path)) {
 		return []
@@ -52,7 +52,7 @@ export default async function(project_root, ignore_esmodules = false) {
 		resources.push({
 			type: resource_type,
 			relative_path,
-			resource: await bundleUpResource(project_root, resource_type, relative_path)
+			resource: await bundleUpResource(project, resource_type, relative_path)
 		})
 	}
 

@@ -43,8 +43,8 @@ async function loadVirtualModule(runtime_data) {
 //
 // virtual js runtime for resources/
 //
-export default async function(project_root) {
-	const runtime_data = await generateRuntimeData(project_root, true)
+export default async function(project) {
+	const runtime_data = await generateRuntimeData(project.root, true)
 
 	return function VipenStaticJsRuntimePlugin() {
 		return {
