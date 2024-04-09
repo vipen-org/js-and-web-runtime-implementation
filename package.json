@@ -1,6 +1,6 @@
 {
   "name": "@vipen/js-and-web-runtime-implementation",
-  "version": "0.21.0",
+  "version": "0.22.0",
   "main": "./dist/runtime.mjs",
   "dependencies": {
     "@anio-js-foundation/create-temporary-resource": "^2.0.0"
